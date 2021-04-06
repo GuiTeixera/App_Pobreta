@@ -1,0 +1,4 @@
+#Tue Mar 30 01:36:34 BRT 2021
+base.0=D\:\\App\\pobreta\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex
