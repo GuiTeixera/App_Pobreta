@@ -1,14 +1,14 @@
 webpackJsonp([9],{
 
-/***/ 442:
+/***/ 448:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DescricaoPageModule", function() { return DescricaoPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DetalhePageModule", function() { return DetalhePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__descricao__ = __webpack_require__(454);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__detalhe__ = __webpack_require__(462);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,34 +18,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var DescricaoPageModule = /** @class */ (function () {
-    function DescricaoPageModule() {
+var DetalhePageModule = /** @class */ (function () {
+    function DetalhePageModule() {
     }
-    DescricaoPageModule = __decorate([
+    DetalhePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__descricao__["a" /* DescricaoPage */],
+                __WEBPACK_IMPORTED_MODULE_2__detalhe__["a" /* DetalhePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__descricao__["a" /* DescricaoPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__detalhe__["a" /* DetalhePage */]),
             ],
         })
-    ], DescricaoPageModule);
-    return DescricaoPageModule;
+    ], DetalhePageModule);
+    return DetalhePageModule;
 }());
 
-//# sourceMappingURL=descricao.module.js.map
+//# sourceMappingURL=detalhe.module.js.map
 
 /***/ }),
 
-/***/ 454:
+/***/ 462:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DescricaoPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DetalhePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_lembrete_lembrete__ = __webpack_require__(283);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_detalhe_detalhe__ = __webpack_require__(287);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -58,48 +58,36 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var DescricaoPage = /** @class */ (function () {
-    function DescricaoPage(navCtrl, navParams, toast, lembreteProvider) {
-        var _this = this;
+var DetalhePage = /** @class */ (function () {
+    function DetalhePage(navCtrl, navParams, detalheProvider, toast) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.detalheProvider = detalheProvider;
         this.toast = toast;
-        this.lembreteProvider = lembreteProvider;
-        this.SetupPageTitle();
-        this.lembrete = this.navParams.data.lembrete || {};
-        var consulta = this.lembreteProvider
-            .get(this.navParams.data.lembretekey).subscribe(function (Data) {
-            consulta.unsubscribe();
-            _this.lembrete = Data;
-            _this.titulolembrete = _this.lembrete.titulo;
-            _this.descricaolembrete = _this.lembrete.descricao;
-        });
+        this.categoria = this.navParams.data.categoria || {};
+        this.treinos = this.detalheProvider.getAllTreinos(this.navParams.data.categoriakey);
     }
-    DescricaoPage.prototype.SetupPageTitle = function () {
-        if (this.navParams.data.categor) {
-            this.title = 'List Ativos';
-        }
+    // editItemProdutos(treinos: any) {                      // categoria.key é igual ao
+    //   this.navCtrl.push('EditDetalhePage', { treinosKey: treinos.key });
+    // }
+    DetalhePage.prototype.removeItemProdutos = function (key) {
+        this.detalheProvider.remove(key);
+        this.toast.create({ message: 'Produto removido com sucesso!', duration: 3000 }).present();
     };
-    DescricaoPage.prototype.editLembrete = function (lembrete) {
-        this.navCtrl.push('EditLembretePage', { lembretekey: lembrete.key });
+    DetalhePage.prototype.newDetail = function () {
+        this.navCtrl.push('EditDetalhePage');
     };
-    DescricaoPage.prototype.removeLembrete = function (key) {
-        this.lembreteProvider.remove(key);
-        this.toast.create({ message: 'Lembrete removido com sucesso!', duration: 3000 }).present();
-    };
-    DescricaoPage = __decorate([
+    DetalhePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-descricao',template:/*ion-inline-start:"D:\App\pobreta\src\pages\descricao\descricao.html"*/'<ion-header>\n  <ion-navbar color="dark">\n    <button ion-button menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n    <ion-title style="text-align: center;">Lembrete</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n  <ion-card>\n\n    <ion-card-content>\n\n      <!-- <h2>Principais funções:</h2> -->\n      <h1>{{titulolembrete}}</h1>\n\n      <!-- <h2>Origem do Ativo:</h2> -->\n      <ion-card-content>{{descricaolembrete}}</ion-card-content>\n\n    </ion-card-content>\n\n  </ion-card>\n\n\n</ion-content>\n'/*ion-inline-end:"D:\App\pobreta\src\pages\descricao\descricao.html"*/,
+            selector: 'page-detalhe',template:/*ion-inline-start:"D:\App\pobreta\src\pages\detalhe\detalhe.html"*/'<ion-header>\n  <ion-navbar color="dark">\n    <button ion-button menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n    <ion-title style="text-align: center;">Produtos</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-list>\n    <ion-item-sliding *ngFor="let item of treinos | async">\n\n      <ion-item>\n        <br>\n        <h2>{{ item.data.descricao }}</h2>\n        <p>Quantidade: {{ item.data.quantidade }}</p>\n        <p>Categoria:{{ item.data.categoryName }}</p>\n      </ion-item>\n\n\n\n      <!-- <ion-item-options side="left">\n        <button ion-button color="secondary" (click)="editItemProdutos(treinos)"><ion-icon name="create"></ion-icon>Editar</button>\n      </ion-item-options> -->\n\n      <ion-item-options side="right">\n        <button ion-button color="danger" (click)="removeItemProdutos(item.key)"><ion-icon name="trash"></ion-icon>Rmv</button>\n\n\n      </ion-item-options>\n\n    </ion-item-sliding>\n  </ion-list>\n\n  <ion-fab right bottom>\n    <button ion-fab color="dark" (click)="newDetail()"><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n\n</ion-content>\n'/*ion-inline-end:"D:\App\pobreta\src\pages\detalhe\detalhe.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_lembrete_lembrete__["a" /* LembreteProvider */]])
-    ], DescricaoPage);
-    return DescricaoPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_detalhe_detalhe__["a" /* DetalheProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */]])
+    ], DetalhePage);
+    return DetalhePage;
 }());
 
-//# sourceMappingURL=descricao.js.map
+//# sourceMappingURL=detalhe.js.map
 
 /***/ })
 

@@ -16,6 +16,7 @@ import { SigninPage } from '../pages/signin/signin';
 import { HomeProvider } from '../providers/home/home';
 import { DetalheProvider } from '../providers/detalhe/detalhe';
 import { LembreteProvider } from '../providers/lembrete/lembrete';
+import { ComprasProvider } from '../providers/compras/compras';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { LembreteProvider } from '../providers/lembrete/lembrete';
     HomeProvider,
     DetalheProvider,
     LembreteProvider,
+    ComprasProvider,
 
   ]
 })

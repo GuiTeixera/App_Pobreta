@@ -5,8 +5,8 @@ import { ToastProvider } from './../../providers/toast/toast';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
-import { HomeProvider } from '../../providers/home/home';
 import { DetalheProvider } from '../../providers/detalhe/detalhe';
+import { ComprasProvider } from '../../providers/compras/compras';
 
 
 @IonicPage()
@@ -29,7 +29,7 @@ export class EditDetalhePage {
               private formBuilder: FormBuilder,
               private toast: ToastProvider,
               private detalheProvider: DetalheProvider,
-              private homeProvider: HomeProvider) {
+              private comprasProvider: ComprasProvider) {
 
       this.treinos = this.navParams.data.treino || {};
                 this.SetupPageTitle();
@@ -72,11 +72,11 @@ export class EditDetalhePage {
   }
 
   private loadCategories() {
-    this.categories = this.homeProvider.getAll();
+    this.categories = this.comprasProvider.getAll();
   }
 
   getCategorias() {
-    const subscribe = this.homeProvider.get(this.form.value.categoryKey).subscribe((categoriasData: any) => {
+    const subscribe = this.comprasProvider.get(this.form.value.categoryKey).subscribe((categoriasData: any) => {
       subscribe.unsubscribe();
       this.categoriaItem = categoriasData;
       console.log(this.categoriaItem);

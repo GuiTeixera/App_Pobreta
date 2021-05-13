@@ -1,6 +1,6 @@
 webpackJsonp([1],{
 
-/***/ 452:
+/***/ 458:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SignupPageModule", function() { return SignupPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__signup__ = __webpack_require__(462);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__signup__ = __webpack_require__(470);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var SignupPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 462:
+/***/ 470:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -106,10 +106,14 @@ var SignupPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-signup',template:/*ion-inline-start:"D:\App\pobreta\src\pages\signup\signup.html"*/'<ion-header >\n\n  <ion-navbar color="dark">\n    <ion-title style="text-align: center;">Criar Conta</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <Form [formGroup]="form">\n\n    <ion-item>\n      <ion-label stacked>Nome e Sobrenome:</ion-label>\n      <ion-input type="text" formControlName="nome" placeholder="Digite seu Nome e Sobrenome!"></ion-input>\n    </ion-item>\n\n    <ion-item *ngIf="!form.controls.nome.valid && (form.controls.nome.dirty || form.controls.nome.touched)" color="danger">\n      <div [hidden]="!form.controls.nome.errors.required">\n        o campo é obrigatorio\n      </div>\n    </ion-item>\n\n    <!-- <ion-item>\n      <ion-label stacked>Data de nascimento:</ion-label>\n      <ion-datetime displayFormat="DD/MM/YYYY" formControlName="nascimento" placeholder="DD/MM/YYYY"></ion-datetime>\n    </ion-item>\n\n    <ion-item *ngIf="!form.controls.nascimento.valid && (form.controls.nascimento.dirty || form.controls.nascimento.touched)" color="danger">\n      <div [hidden]="!form.controls.nascimento.errors.required">\n        o campo é obrigatorio\n      </div>\n    </ion-item> -->\n\n    <ion-item>\n      <ion-label stacked>E-mail:</ion-label>\n      <ion-input type="email" formControlName="email" placeholder="@email.com"></ion-input>\n    </ion-item>\n\n    <ion-item *ngIf="!form.controls.email.valid && (form.controls.email.dirty || form.controls.email.touched)" color="danger">\n      <div [hidden]="!form.controls.email.errors.required">\n        o campo é obrigatorio\n      </div>\n    </ion-item>\n\n    <ion-item>\n      <ion-label stacked>Senha:</ion-label>\n      <ion-input type="password" formControlName="password" placeholder="Digite sua Senha!"></ion-input>\n    </ion-item>\n\n    <ion-item *ngIf="!form.controls.password.valid && (form.controls.password.dirty || form.controls.password.touched)" color="danger">\n      <div [hidden]="!form.controls.password.errors.required">\n        o campo é obrigatorio\n      </div>\n    </ion-item>\n\n    <div padding>\n      <button ion-button block color="dark" (click)="onSubmit()" type="submit" [disabled]="! form.valid">\n        Cadastrar\n      </button>\n    </div>\n\n  </Form>\n\n</ion-content>\n'/*ion-inline-end:"D:\App\pobreta\src\pages\signup\signup.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormBuilder */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_account_account__["a" /* AccountProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_account_account__["a" /* AccountProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* MenuController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* MenuController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _f || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormBuilder */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_account_account__["a" /* AccountProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* MenuController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
     ], SignupPage);
     return SignupPage;
-    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=signup.js.map

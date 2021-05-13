@@ -1,14 +1,14 @@
 webpackJsonp([8],{
 
-/***/ 443:
+/***/ 449:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DetalhePageModule", function() { return DetalhePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditComprasPageModule", function() { return EditComprasPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__detalhe__ = __webpack_require__(455);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit_compras__ = __webpack_require__(463);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,34 +18,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var DetalhePageModule = /** @class */ (function () {
-    function DetalhePageModule() {
+var EditComprasPageModule = /** @class */ (function () {
+    function EditComprasPageModule() {
     }
-    DetalhePageModule = __decorate([
+    EditComprasPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__detalhe__["a" /* DetalhePage */],
+                __WEBPACK_IMPORTED_MODULE_2__edit_compras__["a" /* EditComprasPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__detalhe__["a" /* DetalhePage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__edit_compras__["a" /* EditComprasPage */]),
             ],
         })
-    ], DetalhePageModule);
-    return DetalhePageModule;
+    ], EditComprasPageModule);
+    return EditComprasPageModule;
 }());
 
-//# sourceMappingURL=detalhe.module.js.map
+//# sourceMappingURL=edit-compras.module.js.map
 
 /***/ }),
 
-/***/ 455:
+/***/ 463:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DetalhePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EditComprasPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_detalhe_detalhe__ = __webpack_require__(284);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_compras_compras__ = __webpack_require__(285);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -58,36 +59,59 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var DetalhePage = /** @class */ (function () {
-    function DetalhePage(navCtrl, navParams, detalheProvider, toast) {
+
+var EditComprasPage = /** @class */ (function () {
+    function EditComprasPage(navCtrl, navParams, formBuilder, toast, comprasProvider) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.detalheProvider = detalheProvider;
+        this.formBuilder = formBuilder;
         this.toast = toast;
+        this.comprasProvider = comprasProvider;
         this.categoria = this.navParams.data.categoria || {};
-        this.treinos = this.detalheProvider.getAllTreinos(this.navParams.data.categoriakey);
+        this.SetupPageTitle();
+        this.createForm();
+        var consulta = this.comprasProvider.get(this.navParams.data.categoriakey).subscribe(function (Data) {
+            consulta.unsubscribe();
+            _this.categoria = Data;
+            _this.createForm();
+        });
     }
-    // editItemProdutos(treinos: any) {                      // categoria.key é igual ao
-    //   this.navCtrl.push('EditDetalhePage', { treinosKey: treinos.key });
-    // }
-    DetalhePage.prototype.removeItemProdutos = function (key) {
-        this.detalheProvider.remove(key);
-        this.toast.create({ message: 'Produto removido com sucesso!', duration: 3000 }).present();
+    EditComprasPage.prototype.SetupPageTitle = function () {
+        if (this.navParams.data.categoria) {
+            this.title = 'Alterando Produto';
+        }
+        else {
+            this.title = 'Novo Produto';
+        }
     };
-    DetalhePage.prototype.newDetail = function () {
-        this.navCtrl.push('EditDetalhePage');
+    EditComprasPage.prototype.createForm = function () {
+        this.form = this.formBuilder.group({
+            key: [this.categoria.key],
+            nome: [this.categoria.nome],
+        });
     };
-    DetalhePage = __decorate([
+    EditComprasPage.prototype.onSubmit = function () {
+        if (this.form.valid) {
+            this.comprasProvider.save(this.form.value);
+            this.toast.create({ message: 'produto salvo com sucesso!', duration: 3000 }).present();
+            this.navCtrl.pop();
+        }
+    };
+    EditComprasPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-detalhe',template:/*ion-inline-start:"D:\App\pobreta\src\pages\detalhe\detalhe.html"*/'<ion-header>\n  <ion-navbar color="dark">\n    <button ion-button menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n    <ion-title style="text-align: center;">Produtos</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-list>\n    <ion-item-sliding *ngFor="let item of treinos | async">\n\n      <ion-item>\n        <br>\n        <h2>{{ item.data.descricao }}</h2>\n        <p>Quantidade: {{ item.data.quantidade }}</p>\n        <p>Categoria:{{ item.data.categoryName }}</p>\n      </ion-item>\n\n\n\n      <!-- <ion-item-options side="left">\n        <button ion-button color="secondary" (click)="editItemProdutos(treinos)"><ion-icon name="create"></ion-icon>Editar</button>\n      </ion-item-options> -->\n\n      <ion-item-options side="right">\n        <button ion-button color="danger" (click)="removeItemProdutos(item.key)"><ion-icon name="trash"></ion-icon>Rmv</button>\n\n\n      </ion-item-options>\n\n    </ion-item-sliding>\n  </ion-list>\n\n  <ion-fab right bottom>\n    <button ion-fab color="dark" (click)="newDetail()"><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n\n</ion-content>\n'/*ion-inline-end:"D:\App\pobreta\src\pages\detalhe\detalhe.html"*/,
+            selector: 'page-edit-compras',template:/*ion-inline-start:"D:\App\pobreta\src\pages\edit-compras\edit-compras.html"*/'<ion-header>\n\n  <ion-navbar color="dark">\n    <ion-title style="text-align: center;">Nova categoria</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <form [formGroup]="form">\n      <ion-item>\n        <ion-label stacked> Categoria dos Produtos </ion-label>\n        <ion-input type="text" formControlName="nome"></ion-input>\n      </ion-item>\n\n      <!-- <ion-item *ngIf="!form.controls.nome.valid && (form.controls.nome.dirty || form.controls.nome.touched)" color="danger">\n        <div [hidden]="!form.controls.nome.errors.required">\n          O Campo é Obrigatório\n        </div>\n      </ion-item> -->\n\n      <!-- <ion-item>\n        <ion-label stacked> Nome do Exercicio </ion-label>\n        <ion-input type="text" formControlName="exercicio"></ion-input>\n      </ion-item> -->\n\n\n      <div padding>\n          <button ion-button block color="dark" type="submit" (click)="onSubmit()" [disabled]="!form.valid" round>Salvar</button>\n        </div>\n  </form>\n</ion-content>\n'/*ion-inline-end:"D:\App\pobreta\src\pages\edit-compras\edit-compras.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_detalhe_detalhe__["a" /* DetalheProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */]])
-    ], DetalhePage);
-    return DetalhePage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_compras_compras__["a" /* ComprasProvider */]])
+    ], EditComprasPage);
+    return EditComprasPage;
 }());
 
-//# sourceMappingURL=detalhe.js.map
+//# sourceMappingURL=edit-compras.js.map
 
 /***/ })
 

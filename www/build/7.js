@@ -1,6 +1,6 @@
 webpackJsonp([7],{
 
-/***/ 444:
+/***/ 450:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditDetalhePageModule", function() { return EditDetalhePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit_detalhe__ = __webpack_require__(456);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit_detalhe__ = __webpack_require__(464);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,17 +38,17 @@ var EditDetalhePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 456:
+/***/ 464:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EditDetalhePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_toast_toast__ = __webpack_require__(285);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_toast_toast__ = __webpack_require__(288);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_home_home__ = __webpack_require__(135);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_detalhe_detalhe__ = __webpack_require__(284);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_detalhe_detalhe__ = __webpack_require__(287);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_compras_compras__ = __webpack_require__(285);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -65,14 +65,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var EditDetalhePage = /** @class */ (function () {
-    function EditDetalhePage(navCtrl, navParams, formBuilder, toast, detalheProvider, homeProvider) {
+    function EditDetalhePage(navCtrl, navParams, formBuilder, toast, detalheProvider, comprasProvider) {
         var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.formBuilder = formBuilder;
         this.toast = toast;
         this.detalheProvider = detalheProvider;
-        this.homeProvider = homeProvider;
+        this.comprasProvider = comprasProvider;
         this.file = null;
         this.treinos = this.navParams.data.treino || {};
         this.SetupPageTitle();
@@ -109,11 +109,11 @@ var EditDetalhePage = /** @class */ (function () {
         }
     };
     EditDetalhePage.prototype.loadCategories = function () {
-        this.categories = this.homeProvider.getAll();
+        this.categories = this.comprasProvider.getAll();
     };
     EditDetalhePage.prototype.getCategorias = function () {
         var _this = this;
-        var subscribe = this.homeProvider.get(this.form.value.categoryKey).subscribe(function (categoriasData) {
+        var subscribe = this.comprasProvider.get(this.form.value.categoryKey).subscribe(function (categoriasData) {
             subscribe.unsubscribe();
             _this.categoriaItem = categoriasData;
             console.log(_this.categoriaItem);
@@ -129,8 +129,8 @@ var EditDetalhePage = /** @class */ (function () {
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormBuilder */],
             __WEBPACK_IMPORTED_MODULE_2__providers_toast_toast__["a" /* ToastProvider */],
-            __WEBPACK_IMPORTED_MODULE_5__providers_detalhe_detalhe__["a" /* DetalheProvider */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_home_home__["a" /* HomeProvider */]])
+            __WEBPACK_IMPORTED_MODULE_4__providers_detalhe_detalhe__["a" /* DetalheProvider */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_compras_compras__["a" /* ComprasProvider */]])
     ], EditDetalhePage);
     return EditDetalhePage;
 }());
